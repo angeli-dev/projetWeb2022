@@ -1,6 +1,7 @@
 <template>
   <div id="logo">
     <img alt="Pims logo" src="../assets/pims_logo.png" />
+    <p>events</p>
   </div>
 </template>
 
@@ -14,7 +15,15 @@ export default {
 #logo {
   padding: 5vh;
 }
-img {
+#logo img {
   height: 8vh;
+}
+#logo p {
+  transform: rotate(-20deg);
+  background-color: #f1a130;
+  margin-top: -3vh;
+  margin-left: 6vw;
+  font-size: 1.5em;
+  padding: 5px;
 }
 </style>

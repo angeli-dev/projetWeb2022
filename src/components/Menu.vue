@@ -2,6 +2,7 @@
   <div id="menu">
     <p>Tendances</p>
     <p>Rechercher</p>
+    <p>À propos</p>
   </div>
 </template>
 
@@ -15,7 +16,7 @@ export default {
 #menu {
   display: flex;
   justify-content: space-evenly;
-  width: 50vw;
+  width: 60vw;
   align-items: center;
 }
 

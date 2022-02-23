@@ -1,8 +1,8 @@
 <template>
   <div id="body">
-    <Section></Section>
-    <Section></Section>
-    <Section></Section>
+    <Section titre="Paris"></Section>
+    <Section titre="Lyon"></Section>
+    <Section titre="Bordeaux"></Section>
   </div>
 </template>
 
