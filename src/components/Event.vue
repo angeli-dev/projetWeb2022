@@ -3,11 +3,15 @@
     <div v-for="data in pimsData" :key="data.id">
       <p>{{ data.id }}</p>
     </div>
+    <p>Garou</p>
+    <p>Tournée 2022</p>
+    <p>Olympia</p>
   </div>
 </template>
 
 <script>
 import getPimsData from "@/services/api/pimsAPI.js";
+
 export default {
   name: "Event",
   data() {
@@ -19,8 +23,9 @@ export default {
     this.retrievePimsData();
   },
   methods: {
-    async retrievePimsData() {
-      this.pimsData = await getPimsData();
+    async retrievPimsData() {
+      this.dogsData = await getPimsData();
+      console.log("Event : " + this.retrievePimsData());
     },
   },
 };
