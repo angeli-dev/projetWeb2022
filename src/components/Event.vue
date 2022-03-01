@@ -23,8 +23,8 @@ export default {
     this.retrievePimsData();
   },
   methods: {
-    async retrievPimsData() {
-      this.dogsData = await getPimsData();
+    async retrievePimsData() {
+      this.pimsData = await getPimsData();
       console.log("Event : " + this.retrievePimsData());
     },
   },
