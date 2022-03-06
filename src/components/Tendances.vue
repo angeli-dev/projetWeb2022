@@ -1,9 +1,6 @@
 <template>
   <div id="tendances">
     <Event></Event>
-    <Event></Event>
-    <Event></Event>
-    <Event></Event>
   </div>
 </template>
 

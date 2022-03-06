@@ -1,37 +1,44 @@
 <template>
-  <div class="event">
+  <div id="events">
     <div v-for="data in pimsData" :key="data.id">
-      <p>{{ data.id }}</p>
+      <div class="event">
+        <p>{{ data.id }}</p>
+        <p>{{ data.label }}</p>
+        <p>{{ data.datetime }}</p>
+      </div>
     </div>
-    <p>Garou</p>
-    <p>Tournée 2022</p>
-    <p>Olympia</p>
   </div>
 </template>
 
 <script>
-import getPimsData from "@/services/api/pimsAPI.js";
+  import {getPimsData} from "@/services/api/pimsAPI.js";
 
-export default {
-  name: "Event",
-  data() {
-    return {
-      pimsData: [{ id: 1 }],
-    };
-  },
-  created: function () {
-    this.retrievePimsData();
-  },
-  methods: {
-    async retrievePimsData() {
-      this.pimsData = await getPimsData();
-      console.log("Event : " + this.retrievePimsData());
+  export default {
+    name: "Event",
+    data() {
+      return {
+        pimsData: [{ id: 1 }],
+      }
     },
-  },
-};
+    created: function () {
+      this.retrievePimsData()
+    },
+    methods: {
+      retrievePimsData: async function() {
+        this.pimsData = await getPimsData();
+        console.log(this.pimsData);
+      },
+    },
+  };
 </script>
 
 <style>
+#events {
+  margin: auto;
+  display: flex;
+  width: 80vw;
+  justify-content: space-evenly;
+}
 .event {
   display: flex;
   flex-direction: column;
