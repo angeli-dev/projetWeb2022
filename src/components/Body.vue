@@ -1,16 +1,17 @@
 <template>
   <div id="body">
-    <Section titre="Paris"></Section>
-    <Section titre="Lyon"></Section>
-    <Section titre="Bordeaux"></Section>
+    <FutureSection city="Paris"></FutureSection>
+    <FutureSection city="Lyon"></FutureSection>
+    <FutureSection city="Bordeaux"></FutureSection>
+    <FutureSection city="Nantes"></FutureSection>
   </div>
 </template>
 
 <script>
-import Section from "./Section.vue";
+import FutureSection from "./FutureSection.vue";
 export default {
   name: "Body",
-  components: { Section },
+  components: { FutureSection },
 };
 </script>
 
