@@ -1,0 +1,38 @@
+<template>
+  <div class="event">
+    <p>{{ name }}</p>
+    <p>{{ venue }}</p>
+    <p>{{ date }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "EventCard",
+  props: {
+    name: { type: String, required: true },
+    venue: { type: String, required: true },
+    date: { type: String, required: true },
+  },
+};
+</script>
+
+<style>
+.event {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fefffe;
+  border-radius: 10%;
+  box-shadow: 0.25vh 0.25vh 2vh #6b6b6b7a;
+  padding: 2vw;
+  flex: 0 0 14vw;
+}
+
+.event p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 15pt;
+}
+</style>
