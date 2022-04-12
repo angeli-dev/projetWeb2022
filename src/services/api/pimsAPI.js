@@ -31,3 +31,29 @@ export async function getEventsInCity(city) {
     });
   return reponse;
 }
+
+export async function getEventById(id) {
+  const myRequest = new Request(
+    "https://sandbox.pims.io/api/v1/events?" +
+      new URLSearchParams({
+        page_size: 4,
+        id: id,
+        expand: "*",
+        from_datetime: new Date(new Date().toString().split("GMT")[0] + " UTC")
+          .toISOString()
+          .split(".")[0],
+      })
+  );
+  const reponse = await fetch(myRequest, myInit)
+    .then((response) => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        new Error(response.statusText);
+      }
+    })
+    .then((data) => {
+      return data._embedded.events;
+    });
+  return reponse;
+}

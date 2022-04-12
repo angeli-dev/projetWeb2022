@@ -1,5 +1,6 @@
 <template>
   <div id="menu">
+    <p>À propos</p>
     <p>Tendances</p>
     <p>Rechercher</p>
     <p>À propos</p>

@@ -1,15 +1,15 @@
 <template>
-  <div id="section">
+  <div id="futureSection">
     <h2>
       À venir à <span>{{ city }}</span>
     </h2>
-    <div class="events">
+    <div class="futureEvents">
       <EventCard
         v-for="data in pimsData"
         :key="data.id"
         :name="data.label"
         :date="
-          new Date(data.datetime + 'Z').toLocaleString((fr, FR), {
+          new Date(data.datetime + 'Z').toLocaleString('fr-FR', {
             year: 'numeric',
             month: 'numeric',
             day: 'numeric',
@@ -75,14 +75,13 @@ export default {
   methods: {
     retrievePimsData: async function () {
       this.pimsData = await getEventsInCity(this.city);
-      // this.pimsData._embedded.venue.label.toString();
     },
   },
 };
 </script>
 
 <style>
-.events {
+.futureEvents {
   margin: auto;
   display: flex;
   width: 80vw;

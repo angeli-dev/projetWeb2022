@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Body></Body>
-    <Footer></Footer>
+    <MainBox></MainBox>
+    <EventBox></EventBox>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
-import Body from "./components/Body.vue";
+import MainBox from "./components/MainBox.vue";
+import EventBox from "./components/EventBox.vue";
+
 export default {
-  components: { Header, Footer, Body },
+  components: { MainBox, EventBox },
   name: "App",
 };
 </script>
@@ -22,6 +21,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", sans-serif;
   color: #383231;
+  display: flex;
+  justify-content: center;
 }
 
 h2 {

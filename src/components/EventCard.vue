@@ -1,5 +1,5 @@
 <template>
-  <div class="event">
+  <div class="eventCard" v-on:click="eEventCard()">
     <p>{{ name }}</p>
     <p>{{ venue }}</p>
     <p>{{ date }}</p>
@@ -14,11 +14,17 @@ export default {
     venue: { type: String, required: true },
     date: { type: String, required: true },
   },
+  methods: {
+    eEventCard() {
+      let eventBox = document.querySelector("#eventBox");
+      eventBox.classList.remove("hidden");
+    },
+  },
 };
 </script>
 
 <style>
-.event {
+.eventCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,7 +36,7 @@ export default {
   flex: 0 0 14vw;
 }
 
-.event p {
+.eventCard p {
   text-align: center;
   font-weight: 700;
   font-size: 15pt;

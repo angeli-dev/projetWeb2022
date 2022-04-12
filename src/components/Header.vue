@@ -1,6 +1,10 @@
 <template>
-  <div id="header">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <div id="header" class="headerMax">
+    <svg
+      class="headerSvgMax"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+    >
       <path
         fill="#0f9da2"
         fill-opacity="1"
@@ -26,16 +30,26 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  width: 100vw;
   display: flex;
   align-items: center;
   color: #fefffe;
   text-transform: uppercase;
 }
+.headerMax {
+  width: 100vw;
+}
+.headerMin {
+  width: 80vw;
+}
 svg {
-  margin-top: -10vh;
   z-index: -10;
   position: absolute;
   top: 0;
+}
+.headerSvgMin {
+  margin-top: 0vh;
+}
+.headerSvgMax {
+  margin-top: -10vh;
 }
 </style>
