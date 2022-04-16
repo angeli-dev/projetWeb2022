@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <MainBox></MainBox>
-    <EventBox></EventBox>
+    <MainBox @selected-eventCard-id="update_selected_event_id"></MainBox>
+    <EventBox :id="id_selected_event"></EventBox>
   </div>
 </template>
 
@@ -12,6 +12,16 @@ import EventBox from "./components/EventBox.vue";
 export default {
   components: { MainBox, EventBox },
   name: "App",
+  data(){
+      return {
+          id_selected_event: this.id_selected_event
+      }
+  },
+  methods: {
+    update_selected_event_id: function (payload) {
+      this.id_selected_event = payload.id
+    }
+  }
 };
 </script>
 

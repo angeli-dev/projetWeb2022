@@ -14,9 +14,7 @@
           new Date(data.datetime + 'Z').toLocaleString('fr-FR', {
             year: 'numeric',
             month: 'numeric',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
+            day: 'numeric'
           })
         "
         :venue="data._embedded.venue.label"
@@ -82,11 +80,9 @@ export default {
       this.pimsData = await getEventsInCity(this.city);
     },
     update_selected_event_id: function (payload) {
-      //console.log(payload);
-      this.selected_event_id = payload.id;
-      console.log(this.selected_event_id);
+      this.$emit("selected-eventCard-id", { id : payload.id });
     },
-  },
+  }
 };
 </script>
 

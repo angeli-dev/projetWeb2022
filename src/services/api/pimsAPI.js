@@ -32,16 +32,11 @@ export async function getEventsInCity(city) {
   return reponse;
 }
 
-export async function getEventById(id) {
+export async function getEventById(eventId) {
   const myRequest = new Request(
-    "https://sandbox.pims.io/api/v1/events?" +
+    "https://sandbox.pims.io/api/v1/events/" + eventId + "?" +
       new URLSearchParams({
-        page_size: 4,
-        id: id,
-        expand: "*",
-        from_datetime: new Date(new Date().toString().split("GMT")[0] + " UTC")
-          .toISOString()
-          .split(".")[0],
+        expand: "*"
       })
   );
   const reponse = await fetch(myRequest, myInit)
@@ -53,7 +48,28 @@ export async function getEventById(id) {
       }
     })
     .then((data) => {
-      return data._embedded.events;
+      return data;
+    });
+  return reponse;
+}
+
+export async function getTicketCountsByEventId(eventId) {
+  const myRequest = new Request(
+    "https://sandbox.pims.io/api/v1/events/" + eventId + "/ticket-counts?" +
+    new URLSearchParams({
+      page_size: 1
+    })
+  );
+  const reponse = await fetch(myRequest, myInit)
+    .then((response) => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        new Error(response.statusText);
+      }
+    })
+    .then((data) => {
+      return data._embedded.ticket_counts[0].sales;
     });
   return reponse;
 }

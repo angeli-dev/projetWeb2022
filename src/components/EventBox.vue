@@ -15,27 +15,54 @@
         }}
       </p>
       <p>{{ pimsData._embedded.venue.label }}</p>
+      <p>Remplissage : {{ pimsData.sales }} / {{ pimsData.costing_capacity }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import { getEventById } from "@/services/api/pimsAPI.js";
+import { getTicketCountsByEventId } from "@/services/api/pimsAPI.js";
 export default {
   components: {},
   name: "EventBox",
-
+ props: {
+    id: { type: Number, required: false },
+  },
   data() {
     return {
       pimsData: {
         id: 1,
         label: "Théo Dionisi",
         datetime: "2022-03-08T20:00:00",
+        sales: 0,
         _embedded: {
           venue: { label: "Olympia" },
         },
       },
     };
   },
+  watch: {
+    id: function(newId) {
+      let eventBox = document.querySelector("#eventBox");
+      if (newId != null && newId != 'undefined') {
+        // On met à jour le panneau latéral et on l'affiche (si il est caché)
+        this.retrievePimsData(newId);
+        eventBox.classList.remove("hidden");
+      } else {
+        // On cache le panneau latéral
+        eventBox.classList.add("hidden");
+      }
+     
+    }
+  },
+  methods: {
+    retrievePimsData: async function (eventId) {
+      let data = await getEventById(eventId);
+      data.sales = await getTicketCountsByEventId(eventId);
+      this.pimsData = data;
+    }
+  }
 };
 </script>
 
