@@ -5,8 +5,10 @@
     </h2>
     <div class="futureEvents">
       <EventCard
+        @selected-eventCard-id="update_selected_event_id"
         v-for="data in pimsData"
         :key="data.id"
+        :id="data.id"
         :name="data.label"
         :date="
           new Date(data.datetime + 'Z').toLocaleString('fr-FR', {
@@ -30,7 +32,10 @@ import { getEventsInCity } from "@/services/api/pimsAPI.js";
 export default {
   name: "FutureSection",
   components: { EventCard },
-  props: { city: { type: String, required: true } },
+  props: {
+    city: { type: String, required: true },
+    selected_event_id: { type: Number, required: false },
+  },
   data() {
     return {
       pimsData: [
@@ -75,6 +80,11 @@ export default {
   methods: {
     retrievePimsData: async function () {
       this.pimsData = await getEventsInCity(this.city);
+    },
+    update_selected_event_id: function (payload) {
+      //console.log(payload);
+      this.selected_event_id = payload.id;
+      console.log(this.selected_event_id);
     },
   },
 };

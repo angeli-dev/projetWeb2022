@@ -1,5 +1,5 @@
 <template>
-  <div class="eventCard" v-on:click="eEventCard()">
+  <div class="eventCard" v-on:click="selected_eventCard">
     <p>{{ name }}</p>
     <p>{{ venue }}</p>
     <p>{{ date }}</p>
@@ -10,14 +10,17 @@
 export default {
   name: "EventCard",
   props: {
+    id: { type: Number, required: true },
     name: { type: String, required: true },
     venue: { type: String, required: true },
     date: { type: String, required: true },
   },
   methods: {
-    eEventCard() {
+    selected_eventCard: function () {
+      this.$emit("selected-eventCard-id", { id: this.id });
       let eventBox = document.querySelector("#eventBox");
       eventBox.classList.remove("hidden");
+      //console.log(this.id);
     },
   },
 };
