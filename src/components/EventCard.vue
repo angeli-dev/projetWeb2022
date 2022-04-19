@@ -18,9 +18,6 @@ export default {
   methods: {
     selected_eventCard: function () {
       this.$emit("selected-eventCard-id", { id: this.id });
-      let eventBox = document.querySelector("#eventBox");
-      eventBox.classList.remove("hidden");
-      //console.log(this.id);
     },
   },
 };

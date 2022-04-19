@@ -1,7 +1,7 @@
 <template>
   <div id="mainBox">
     <Header></Header>
-    <Body></Body>
+    <Body @selected-eventCard-id="update_selected_event_id"></Body>
     <Footer></Footer>
   </div>
 </template>
@@ -13,6 +13,11 @@ import Body from "./Body.vue";
 export default {
   components: { Header, Footer, Body },
   name: "MainBox",
+  methods: {
+    update_selected_event_id: function (payload) {
+      this.$emit("selected-eventCard-id", { id : payload.id });
+    }
+  }
 };
 </script>
 

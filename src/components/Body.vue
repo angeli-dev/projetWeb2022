@@ -1,9 +1,18 @@
 <template>
   <div id="body">
-    <FutureSection city="Paris"></FutureSection>
-    <FutureSection city="Lyon"></FutureSection>
-    <FutureSection city="Bordeaux"></FutureSection>
-    <FutureSection city="Nantes"></FutureSection>
+    <FutureSection
+      @selected-eventCard-id="update_selected_event_id"
+      city="Paris"
+    ></FutureSection>
+    <FutureSection
+      @selected-eventCard-id="update_selected_event_id"
+       city="Lyon"></FutureSection>
+    <FutureSection
+      @selected-eventCard-id="update_selected_event_id"
+       city="Bordeaux"></FutureSection>
+    <FutureSection
+      @selected-eventCard-id="update_selected_event_id"
+       city="Nantes"></FutureSection>
   </div>
 </template>
 
@@ -12,6 +21,11 @@ import FutureSection from "./FutureSection.vue";
 export default {
   name: "Body",
   components: { FutureSection },
+  methods: {
+    update_selected_event_id: function (payload) {
+      this.$emit("selected-eventCard-id", { id : payload.id });
+    }
+  }
 };
 </script>
 
