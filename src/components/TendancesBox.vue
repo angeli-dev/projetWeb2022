@@ -1,5 +1,5 @@
 <template>
-  <div id="mainBox">
+  <div id="tendancesBox">
     <Header></Header>
     <Body @selected-eventCard-id="update_selected_event_id"></Body>
     <Footer></Footer>
@@ -12,16 +12,13 @@ import Footer from "./Footer.vue";
 import Body from "./Body.vue";
 export default {
   components: { Header, Footer, Body },
-  name: "MainBox",
+  name: "TendancesBox",
   methods: {
     update_selected_event_id: function (payload) {
-      this.$emit("selected-eventCard-id", { id : payload.id });
-    }
-  }
+      this.$emit("selected-eventCard-id", { id: payload.id });
+    },
+  },
 };
 </script>
 
-<style>
-#mainBox {
-}
-</style>
+<style></style>

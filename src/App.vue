@@ -1,27 +1,13 @@
 <template>
   <div id="app">
-    <MainBox @selected-eventCard-id="update_selected_event_id"></MainBox>
-    <EventBox :id="id_selected_event"></EventBox>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MainBox from "./components/MainBox.vue";
-import EventBox from "./components/EventBox.vue";
-
 export default {
-  components: { MainBox, EventBox },
+  components: {},
   name: "App",
-  data(){
-      return {
-          id_selected_event: this.id_selected_event
-      }
-  },
-  methods: {
-    update_selected_event_id: function (payload) {
-      this.id_selected_event = payload.id
-    }
-  }
 };
 </script>
 
@@ -31,8 +17,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", sans-serif;
   color: #383231;
-  display: flex;
-  justify-content: center;
 }
 
 h2 {

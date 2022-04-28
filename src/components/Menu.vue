@@ -1,9 +1,8 @@
 <template>
   <div id="menu">
-    <p>À propos</p>
-    <p>Tendances</p>
-    <p>Rechercher</p>
-    <p>À propos</p>
+    <router-link class="link" to="/tendances">Tendances</router-link>
+    <router-link class="link" to="/rechercher">Rechercher</router-link>
+    <router-link class="link" to="/a-propos">À propos</router-link>
   </div>
 </template>
 
@@ -21,10 +20,12 @@ export default {
   align-items: center;
 }
 
-#menu p {
+.link {
   flex: 1 1 auto;
   text-align: center;
   font-weight: 700;
   font-size: 15pt;
+  text-decoration: none;
+  color: #fefffe;
 }
 </style>

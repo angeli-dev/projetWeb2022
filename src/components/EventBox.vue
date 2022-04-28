@@ -1,21 +1,39 @@
 <template>
   <div id="eventBox" class="hidden">
     <div id="eventBoxContent">
-      <h2>titre</h2>
-      <p>{{ pimsData.label }}</p>
+      <h2>Informations détaillées</h2>
+      <p>Nom : <br />{{ pimsData.label }}</p>
       <p>
+        Date :<br />
         {{
           new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
             year: "numeric",
             month: "numeric",
             day: "numeric",
+          })
+        }}
+      </p>
+      <p>
+        Heure :<br />
+        {{
+          new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
             hour: "numeric",
             minute: "numeric",
           })
         }}
       </p>
-      <p>{{ pimsData._embedded.venue.label }}</p>
-      <p>Remplissage : {{ pimsData.sales }} / {{ pimsData.costing_capacity }}</p>
+      <p>
+        Lieu :<br />
+        {{ pimsData._embedded.venue.label }}
+      </p>
+      <p>
+        Capacité de la salle :<br />
+        {{ pimsData.costing_capacity }}
+      </p>
+      <p>
+        Nombre de places restantes :<br />
+        {{ pimsData.costing_capacity - pimsData.sales }}
+      </p>
     </div>
   </div>
 </template>
@@ -26,7 +44,7 @@ import { getTicketCountsByEventId } from "@/services/api/pimsAPI.js";
 export default {
   components: {},
   name: "EventBox",
- props: {
+  props: {
     id: { type: Number, required: false },
   },
   data() {
@@ -36,6 +54,7 @@ export default {
         label: "Théo Dionisi",
         datetime: "2022-03-08T20:00:00",
         sales: 0,
+        costing_capacity: 1000,
         _embedded: {
           venue: { label: "Olympia" },
         },
@@ -43,9 +62,9 @@ export default {
     };
   },
   watch: {
-    id: function(newId) {
+    id: function (newId) {
       let eventBox = document.querySelector("#eventBox");
-      if (newId != null && newId != 'undefined') {
+      if (newId != null && newId != "undefined") {
         // On met à jour le panneau latéral et on l'affiche (si il est caché)
         this.retrievePimsData(newId);
         eventBox.classList.remove("hidden");
@@ -53,16 +72,15 @@ export default {
         // On cache le panneau latéral
         eventBox.classList.add("hidden");
       }
-     
-    }
+    },
   },
   methods: {
     retrievePimsData: async function (eventId) {
       let data = await getEventById(eventId);
       data.sales = await getTicketCountsByEventId(eventId);
       this.pimsData = data;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -73,7 +91,7 @@ export default {
   padding: 2vw;
   z-index: 100;
   border-left: #f1a130 2vw solid;
-  width: 40vw;
+  width: 45vw;
 }
 .hidden {
   display: none;
@@ -81,5 +99,6 @@ export default {
 
 #eventBoxContent {
   position: fixed;
+  margin-left: -1vw;
 }
 </style>
