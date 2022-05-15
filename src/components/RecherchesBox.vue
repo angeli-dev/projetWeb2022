@@ -5,6 +5,7 @@
       @selectedEventSearch="update_event_search"
       @selectedEventFilter="update_event_filter"
     ></SearchTab>
+    <SearchResults :search="event_search" :filter="event_filter"></SearchResults>
     <Footer></Footer>
   </div>
 </template>
@@ -13,8 +14,9 @@
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SearchTab from "./SearchTab.vue";
+import SearchResults from "./SearchResults.vue";
 export default {
-  components: { Header, Footer, SearchTab },
+  components: { Header, Footer, SearchTab, SearchResults },
   name: "RecherchesBox",
   data() {
     return {
