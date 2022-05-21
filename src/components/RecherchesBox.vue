@@ -5,7 +5,11 @@
       @selectedEventSearch="update_event_search"
       @selectedEventFilter="update_event_filter"
     ></SearchTab>
-    <SearchResults :search="event_search" :filter="event_filter"></SearchResults>
+    <SearchResults
+      :search="event_search"
+      :filter="event_filter"
+      @selected-eventCard-id="update_selected_event_id"
+    ></SearchResults>
     <Footer></Footer>
   </div>
 </template>
@@ -27,12 +31,13 @@ export default {
 
   methods: {
     update_event_search: function (payload) {
-      //console.log(payload);
       this.event_search = payload;
     },
     update_event_filter: function (payload) {
-      //console.log(payload);
       this.event_filter = payload;
+    },
+    update_selected_event_id: function (payload) {
+      this.$emit("selected-eventCard-id", { id: payload.id });
     },
   },
 };

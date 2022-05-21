@@ -1,6 +1,6 @@
 <template>
   <div id="menu">
-    <router-link class="link" to="/tendances">Tendances</router-link>
+    <router-link class="link" to="/tendances">À venir</router-link>
     <router-link class="link" to="/rechercher">Rechercher</router-link>
     <router-link class="link" to="/a-propos">À propos</router-link>
   </div>
@@ -15,6 +15,7 @@ export default {
 <style>
 #menu {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: 60vw;
   align-items: center;

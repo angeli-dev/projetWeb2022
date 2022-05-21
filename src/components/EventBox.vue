@@ -23,6 +23,10 @@
         }}
       </p>
       <p>
+        Ville :<br />
+        {{ pimsData._embedded.venue.city }}
+      </p>
+      <p>
         Lieu :<br />
         {{ pimsData._embedded.venue.label }}
       </p>

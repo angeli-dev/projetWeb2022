@@ -14,7 +14,7 @@
           new Date(data.datetime + 'Z').toLocaleString('fr-FR', {
             year: 'numeric',
             month: 'numeric',
-            day: 'numeric'
+            day: 'numeric',
           })
         "
         :venue="data._embedded.venue.label"
@@ -80,9 +80,9 @@ export default {
       this.pimsData = await getEventsInCity(this.city);
     },
     update_selected_event_id: function (payload) {
-      this.$emit("selected-eventCard-id", { id : payload.id });
+      this.$emit("selected-eventCard-id", { id: payload.id });
     },
-  }
+  },
 };
 </script>
 
@@ -90,6 +90,7 @@ export default {
 .futureEvents {
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   width: 80vw;
   justify-content: space-evenly;
 }

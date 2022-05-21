@@ -1,17 +1,17 @@
 <template>
   <div id="searchTab">
-    <label for="event-filter">Je recherche les concerts d' </label>
+    <label for="event-filter">Je recherche les concerts </label>
     <select v-model="eventFilter" id="event-filter" v-on:change="event_filter">
-      <option value="label">un artiste</option>
-      <option value="venue_label">un lieu</option>
-      <option value="venue_city">une ville</option>
+      <option value="label">d'un artiste</option>
+      <option value="venue_label">dans une salle</option>
+      <option value="venue_city">dans une ville</option>
     </select>
     <input
       type="text"
       v-on:input="event_search"
       v-model="eventSearch"
       name="event-search"
-      placeholder="Chercher des événements"
+      placeholder="... ?"
     />
   </div>
 </template>
@@ -22,8 +22,8 @@ export default {
   name: "searchTab",
   data() {
     return {
-      eventSearch: localStorage.getItem('search') ?? "",
-      eventFilter: localStorage.getItem('filter') ?? "artist",
+      eventSearch: localStorage.getItem("search") ?? "",
+      eventFilter: localStorage.getItem("filter") ?? "artist",
     };
   },
   methods: {
@@ -43,5 +43,14 @@ export default {
   display: flex;
   justify-content: center;
   z-index: 20;
+}
+select,
+input,
+select:focus,
+input::placeholder {
+  background-color: #15b9c1;
+  border: none;
+  font-size: 12pt;
+  color: #383231;
 }
 </style>
