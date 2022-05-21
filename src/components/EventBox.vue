@@ -1,6 +1,7 @@
 <template>
   <div id="eventBox" class="hidden">
     <div id="eventBoxContent">
+      <div class="closeEventCard" v-on:click="closeEventCard">❌</div>
       <h2>Informations détaillées</h2>
       <p>Nom : <br />{{ pimsData.label }}</p>
       <p>
@@ -67,15 +68,9 @@ export default {
   },
   watch: {
     id: function (newId) {
-      let eventBox = document.querySelector("#eventBox");
-      if (newId != null && newId != "undefined") {
-        // On met à jour le panneau latéral et on l'affiche (si il est caché)
-        this.retrievePimsData(newId);
-        eventBox.classList.remove("hidden");
-      } else {
-        // On cache le panneau latéral
-        eventBox.classList.add("hidden");
-      }
+      // On met à jour le panneau latéral et on l'affiche (si il est caché)
+      this.retrievePimsData(newId);
+      document.querySelector("#eventBox").classList.remove("hidden");
     },
   },
   methods: {
@@ -84,7 +79,10 @@ export default {
       data.sales = await getTicketCountsByEventId(eventId);
       this.pimsData = data;
     },
-  },
+    closeEventCard: function () {
+      document.querySelector("#eventBox").classList.add("hidden");
+    }
+  }
 };
 </script>
 

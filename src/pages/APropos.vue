@@ -1,6 +1,7 @@
 <template>
-  <div id="recherches">
-    <AProposBox></AProposBox>
+  <div id="a-propos">
+    <AProposBox>
+    </AProposBox>
   </div>
 </template>
 
@@ -9,8 +10,11 @@ import AProposBox from "@/components/AProposBox.vue";
 
 export default {
   components: { AProposBox },
-  name: "Recherches",
+  name: "A-propos",
 };
 </script>
 
-<style></style>
+
+
+<style>
+</style>

@@ -4,10 +4,12 @@
     <SearchTab
       @selectedEventSearch="update_event_search"
       @selectedEventFilter="update_event_filter"
+      @selectedEventSort="update_event_sort"
     ></SearchTab>
     <SearchResults
       :search="event_search"
       :filter="event_filter"
+      :sort="event_sort"
       @selected-eventCard-id="update_selected_event_id"
     ></SearchResults>
     <Footer></Footer>
@@ -26,6 +28,7 @@ export default {
     return {
       event_search: this.event_search,
       event_filter: this.event_filter,
+      event_sort: this.event_sort,
     };
   },
 
@@ -36,10 +39,13 @@ export default {
     update_event_filter: function (payload) {
       this.event_filter = payload;
     },
+    update_event_sort: function (payload) {
+      this.event_sort = payload;
+    },
     update_selected_event_id: function (payload) {
       this.$emit("selected-eventCard-id", { id: payload.id });
-    },
-  },
+    }
+  }
 };
 </script>
 

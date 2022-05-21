@@ -22,7 +22,6 @@ export default {
   methods: {
     update_selected_event_id: function (payload) {
       this.id_selected_event = payload.id;
-      console.log(this.id_selected_event);
     },
   },
 };

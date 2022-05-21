@@ -2,7 +2,7 @@
   <div id="searchResults">
     <EventCard
       @selected-eventCard-id="update_selected_event_id"
-      v-for="data in pimsData"
+      v-for="data in organizedPimsData"
       :key="data.id"
       :id="data.id"
       :name="data.label"
@@ -28,6 +28,15 @@ export default {
   props: {
     filter: { type: String, required: false },
     search: { type: String, required: false },
+    sort: { type: String, required: false },
+  },
+  computed: {
+    organizedPimsData: function() {
+      const field = ["AZArtist", "ZAArtist"].includes(this.sort) ? "label" : "label";
+      const reversed = ["ZAArtist", "ZADate"].includes(this.sort) ? -1 : 1;
+      let data = [].slice.call(this.pimsData);
+			return data.sort((a, b) => a[field].localeCompare(b[field]) * reversed)
+    }
   },
   data() {
     return {
@@ -46,6 +55,9 @@ export default {
       localStorage.setItem("filter", newFilter);
       this.retrievePimsData(newFilter, this.search);
     },
+    sort: function (newSort) {
+      localStorage.setItem("sort", newSort);
+    }
   },
   methods: {
     retrievePimsData: async function (filter, search) {

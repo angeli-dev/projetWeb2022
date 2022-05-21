@@ -2,7 +2,7 @@
   <div id="searchTab">
     <label for="event-filter">Je recherche les concerts </label>
     <select v-model="eventFilter" id="event-filter" v-on:change="event_filter">
-      <option value="label">d'un artiste</option>
+      <option value="label" selected>d'un artiste</option>
       <option value="venue_label">dans une salle</option>
       <option value="venue_city">dans une ville</option>
     </select>
@@ -13,6 +13,13 @@
       name="event-search"
       placeholder="... ?"
     />
+    <label for="event-sort"> trié par </label>
+    <select v-model="eventSort" id="event-sort" v-on:change="event_sort">
+      <option value="AZArtist" selected>artiste ⏫</option>
+      <option value="ZAArtist">artiste ⏬</option>
+      <option value="AZDate">date ⏫</option>
+      <option value="ZADate">date ⏬</option>
+    </select>
   </div>
 </template>
 
@@ -21,9 +28,10 @@ export default {
   components: {},
   name: "searchTab",
   data() {
-    return {
+    return {  
       eventSearch: localStorage.getItem("search") ?? "",
-      eventFilter: localStorage.getItem("filter") ?? "artist",
+      eventFilter: localStorage.getItem("filter") ?? "label",
+      eventSort: localStorage.getItem("sort") ?? "AZDate",
     };
   },
   methods: {
@@ -32,6 +40,9 @@ export default {
     },
     event_filter: function () {
       this.$emit("selectedEventFilter", this.eventFilter);
+    },
+    event_sort: function () {
+      this.$emit("selectedEventSort", this.eventSort);
     },
   },
 };
