@@ -25,19 +25,24 @@ import { getEventsBySearch } from "@/services/api/pimsAPI.js";
 export default {
   components: { EventCard },
   name: "SearchResults",
+
   props: {
     filter: { type: String, required: false },
     search: { type: String, required: false },
     sort: { type: String, required: false },
   },
+
   computed: {
-    organizedPimsData: function() {
-      const field = ["AZArtist", "ZAArtist"].includes(this.sort) ? "label" : "label";
+    organizedPimsData: function () {
+      const field = ["AZArtist", "ZAArtist"].includes(this.sort)
+        ? "label"
+        : "label";
       const reversed = ["ZAArtist", "ZADate"].includes(this.sort) ? -1 : 1;
       let data = [].slice.call(this.pimsData);
-			return data.sort((a, b) => a[field].localeCompare(b[field]) * reversed)
-    }
+      return data.sort((a, b) => a[field].localeCompare(b[field]) * reversed);
+    },
   },
+
   data() {
     return {
       pimsData: this.retrievePimsData(
@@ -46,6 +51,7 @@ export default {
       ),
     };
   },
+
   watch: {
     search: function (newSearch) {
       localStorage.setItem("search", newSearch);
@@ -57,8 +63,9 @@ export default {
     },
     sort: function (newSort) {
       localStorage.setItem("sort", newSort);
-    }
+    },
   },
+
   methods: {
     retrievePimsData: async function (filter, search) {
       let data = await getEventsBySearch(filter, search);

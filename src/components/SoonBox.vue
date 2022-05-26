@@ -1,7 +1,7 @@
 <template>
-  <div id="tendancesBox">
+  <div id="soonBox">
     <Header></Header>
-    <Body @selected-eventCard-id="update_selected_event_id"></Body>
+    <SoonBody @selected-eventCard-id="update_selected_event_id"></SoonBody>
     <Footer></Footer>
   </div>
 </template>
@@ -9,10 +9,11 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
-import Body from "./Body.vue";
+import SoonBody from "./SoonBody.vue";
 export default {
-  components: { Header, Footer, Body },
-  name: "TendancesBox",
+  components: { Header, Footer, SoonBody },
+  name: "SoonBox",
+
   methods: {
     update_selected_event_id: function (payload) {
       this.$emit("selected-eventCard-id", { id: payload.id });
@@ -20,5 +21,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

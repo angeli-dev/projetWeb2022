@@ -46,6 +46,7 @@
 <script>
 import { getEventById } from "@/services/api/pimsAPI.js";
 import { getTicketCountsByEventId } from "@/services/api/pimsAPI.js";
+
 export default {
   components: {},
   name: "EventBox",
@@ -56,12 +57,12 @@ export default {
     return {
       pimsData: {
         id: 1,
-        label: "Théo Dionisi",
-        datetime: "2022-03-08T20:00:00",
-        sales: 0,
+        label: "Antoine Libert Tour",
+        datetime: "2022-06-03T20:00:00",
+        sales: 999,
         costing_capacity: 1000,
         _embedded: {
-          venue: { label: "Olympia" },
+          venue: { label: "Casino de Paris", city: "Paris" },
         },
       },
     };
@@ -81,8 +82,8 @@ export default {
     },
     closeEventCard: function () {
       document.querySelector("#eventBox").classList.add("hidden");
-    }
-  }
+    },
+  },
 };
 </script>
 

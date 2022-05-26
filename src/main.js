@@ -1,17 +1,17 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-import Tendances from "./pages/Tendances.vue";
-import Recherches from "./pages/Recherches.vue";
-import APropos from "./pages/APropos.vue";
+import SoonPage from "./pages/SoonPage.vue";
+import SearchPage from "./pages/SearchPage.vue";
+import AboutPage from "./pages/AboutPage.vue";
 
 Vue.config.productionTip = false;
 
 const routes = [
-  { path: "/", component: Tendances },
-  { path: "/tendances", component: Tendances },
-  { path: "/rechercher", component: Recherches },
-  { path: "/a-propos", component: APropos },
+  { path: "/", component: SoonPage },
+  { path: "/a-venir", component: SoonPage },
+  { path: "/rechercher", component: SearchPage },
+  { path: "/a-propos", component: AboutPage },
 ];
 
 const router = new VueRouter({

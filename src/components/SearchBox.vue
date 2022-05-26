@@ -1,5 +1,5 @@
 <template>
-  <div id="recherchesBox">
+  <div id="searchBox">
     <Header></Header>
     <SearchTab
       @selectedEventSearch="update_event_search"
@@ -21,9 +21,11 @@ import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SearchTab from "./SearchTab.vue";
 import SearchResults from "./SearchResults.vue";
+
 export default {
   components: { Header, Footer, SearchTab, SearchResults },
-  name: "RecherchesBox",
+  name: "searchBox",
+
   data() {
     return {
       event_search: this.event_search,
@@ -44,9 +46,15 @@ export default {
     },
     update_selected_event_id: function (payload) {
       this.$emit("selected-eventCard-id", { id: payload.id });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style></style>
+<style>
+#searchBox {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+</style>

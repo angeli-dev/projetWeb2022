@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <p>Fait avec ❤️ par Angélique Lebas</p>
+    <p>Un site réalisé par Angélique Lebas</p>
   </div>
 </template>
 

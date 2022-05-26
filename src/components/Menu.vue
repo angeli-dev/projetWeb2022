@@ -1,6 +1,6 @@
 <template>
   <div id="menu">
-    <router-link class="link" to="/tendances">À venir</router-link>
+    <router-link class="link" to="/a-venir">À venir</router-link>
     <router-link class="link" to="/rechercher">Rechercher</router-link>
     <router-link class="link" to="/a-propos">À propos</router-link>
   </div>

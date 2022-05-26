@@ -18,8 +18,8 @@ export default {
   methods: {
     selected_eventCard: function () {
       this.$emit("selected-eventCard-id", { id: this.id });
-    }
-  }
+    },
+  },
 };
 </script>
 

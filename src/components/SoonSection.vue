@@ -1,9 +1,9 @@
 <template>
-  <div id="futureSection">
+  <div id="soonSection">
     <h2>
       À venir à <span>{{ city }}</span>
     </h2>
-    <div class="futureEvents">
+    <div class="soonEvents">
       <EventCard
         @selected-eventCard-id="update_selected_event_id"
         v-for="data in pimsData"
@@ -28,43 +28,44 @@ import EventCard from "./EventCard.vue";
 import { getEventsInCity } from "@/services/api/pimsAPI.js";
 
 export default {
-  name: "FutureSection",
+  name: "SoonSection",
   components: { EventCard },
   props: {
     city: { type: String, required: true },
     selected_event_id: { type: Number, required: false },
   },
+
   data() {
     return {
       pimsData: [
         {
           id: 1,
-          label: "Théo Dionisi",
-          datetime: "2022-03-08T20:00:00",
+          label: "Indochine",
+          datetime: "2022-06-08T20:00:00",
           _embedded: {
-            venue: { label: "Olympia" },
+            venue: { label: "Stade de France" },
           },
         },
         {
           id: 2,
-          label: "Théo Dionisi",
-          datetime: "2022-03-08T20:00:00",
+          label: "Les Frangines",
+          datetime: "2022-06-15T19:00:00",
           _embedded: {
             venue: { label: "Olympia" },
           },
         },
         {
           id: 3,
-          label: "Théo Dionisi",
-          datetime: "2022-03-08T20:00:00",
+          label: "Hoshi",
+          datetime: "2022-06-16T21:00:00",
           _embedded: {
-            venue: { label: "Olympia" },
+            venue: { label: "Zénith de Paris" },
           },
         },
         {
           id: 4,
-          label: "Théo Dionisi",
-          datetime: "2022-03-08T20:00:00",
+          label: "Lily Wood & The Prick",
+          datetime: "2022-06-20T20:00:00",
           _embedded: {
             venue: { label: "Olympia" },
           },
@@ -72,9 +73,11 @@ export default {
       ],
     };
   },
+
   created: function () {
     this.retrievePimsData();
   },
+
   methods: {
     retrievePimsData: async function () {
       this.pimsData = await getEventsInCity(this.city);
@@ -87,7 +90,7 @@ export default {
 </script>
 
 <style>
-.futureEvents {
+.soonEvents {
   margin: auto;
   display: flex;
   flex-wrap: wrap;

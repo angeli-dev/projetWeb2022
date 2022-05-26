@@ -27,13 +27,15 @@
 export default {
   components: {},
   name: "searchTab",
+
   data() {
-    return {  
+    return {
       eventSearch: localStorage.getItem("search") ?? "",
       eventFilter: localStorage.getItem("filter") ?? "label",
       eventSort: localStorage.getItem("sort") ?? "AZDate",
     };
   },
+
   methods: {
     event_search: function () {
       this.$emit("selectedEventSearch", this.eventSearch);

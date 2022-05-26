@@ -1,36 +1,41 @@
 <template>
-  <div id="body">
-    <FutureSection
+  <div id="soonBody">
+    <SoonSection
       @selected-eventCard-id="update_selected_event_id"
       city="Paris"
-    ></FutureSection>
-    <FutureSection
+    ></SoonSection>
+    <SoonSection
       @selected-eventCard-id="update_selected_event_id"
-       city="Lyon"></FutureSection>
-    <FutureSection
+      city="Lyon"
+    ></SoonSection>
+    <SoonSection
       @selected-eventCard-id="update_selected_event_id"
-       city="Bordeaux"></FutureSection>
-    <FutureSection
+      city="Bordeaux"
+    ></SoonSection>
+    <SoonSection
       @selected-eventCard-id="update_selected_event_id"
-       city="Nantes"></FutureSection>
+      city="Nantes"
+    ></SoonSection>
   </div>
 </template>
 
 <script>
-import FutureSection from "./FutureSection.vue";
+import SoonSection from "./SoonSection.vue";
+
 export default {
-  name: "Body",
-  components: { FutureSection },
+  name: "SoonBody",
+  components: { SoonSection },
+
   methods: {
     update_selected_event_id: function (payload) {
-      this.$emit("selected-eventCard-id", { id : payload.id });
-    }
-  }
+      this.$emit("selected-eventCard-id", { id: payload.id });
+    },
+  },
 };
 </script>
 
 <style>
-#body {
+#soonBody {
   margin-top: 30vh;
 }
 </style>
