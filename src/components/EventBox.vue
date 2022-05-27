@@ -3,42 +3,44 @@
     <div id="eventBoxContent">
       <div class="closeEventCard" v-on:click="closeEventCard">❌</div>
       <h2>Informations détaillées</h2>
-      <p>Nom : <br />{{ pimsData.label }}</p>
-      <p>
-        Date :<br />
-        {{
-          new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          })
-        }}
-      </p>
-      <p>
-        Heure :<br />
-        {{
-          new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
-            hour: "numeric",
-            minute: "numeric",
-          })
-        }}
-      </p>
-      <p>
-        Ville :<br />
-        {{ pimsData._embedded.venue.city }}
-      </p>
-      <p>
-        Lieu :<br />
-        {{ pimsData._embedded.venue.label }}
-      </p>
-      <p>
-        Capacité de la salle :<br />
-        {{ pimsData.costing_capacity }}
-      </p>
-      <p>
-        Nombre de places restantes :<br />
-        {{ pimsData.costing_capacity - pimsData.sales }}
-      </p>
+      <div id="eventBoxText">
+        <p>Nom : <br />{{ pimsData.label }}</p>
+        <p>
+          Date :<br />
+          {{
+            new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            })
+          }}
+        </p>
+        <p>
+          Heure :<br />
+          {{
+            new Date(pimsData.datetime + "Z").toLocaleString("fr-FR", {
+              hour: "numeric",
+              minute: "numeric",
+            })
+          }}
+        </p>
+        <p>
+          Ville :<br />
+          {{ pimsData._embedded.venue.city }}
+        </p>
+        <p>
+          Lieu :<br />
+          {{ pimsData._embedded.venue.label }}
+        </p>
+        <p>
+          Capacité de la salle :<br />
+          {{ pimsData.costing_capacity }}
+        </p>
+        <p>
+          Nombre de places restantes :<br />
+          {{ pimsData.costing_capacity - pimsData.sales }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -105,5 +107,37 @@ export default {
 #eventBoxContent {
   position: fixed;
   margin-left: -1vw;
+}
+
+@media only screen and (max-width: 1200px) {
+  #eventBox {
+    position: fixed;
+    top: 20vh;
+    width: 80vw;
+    height: 60vh;
+    border: #f1a130 2vw solid;
+    border-radius: 25px;
+  }
+  #eventBoxContent {
+    margin-left: 1vw;
+  }
+  #eventBoxText {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #eventBoxContent h2 {
+    padding: 30px;
+  }
+  #eventBoxContent p {
+    width: 15vw;
+    margin: 2vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #eventBox {
+    position: fixed;
+    height: 70vh;
+  }
 }
 </style>
