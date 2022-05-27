@@ -1,5 +1,9 @@
 # Pims Events
 
+## Uses plugin to connect with PimsApi
+
+Download https://add0n.com/access-control.html
+
 ## Project setup
 
 ```
@@ -27,7 +31,3 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Uses plugin to connect with PimsApi
-
-Lien
