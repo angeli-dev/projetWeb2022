@@ -2,11 +2,12 @@
   <div id="aboutBox">
     <Header></Header>
     <p id="aboutText">
-      Nous utilisons l'API publique de Pims (Pointages Intelligents pour le
-      Monde du Spectacle). Cette API est conçue pour les logiciels tiers, les
-      éditeurs et les partenaires. Son objectif principal est de donner accès
-      aux données de base d'un client Pims (c'est-à-dire les événements, les
-      ventes et les opérations marketing...).
+      Ce site utilise l'<a href="https://api.pims.io/">API publique de Pims</a>
+      (Pointages Intelligents pour le Monde du Spectacle). <br /><br />Cette API
+      est conçue pour les logiciels tiers, les éditeurs et les partenaires.
+      <br /><br />Son objectif principal est de donner accès aux données de base
+      d'un client Pims (c'est-à-dire les événements, les ventes et les
+      opérations marketing...).
     </p>
     <Footer></Footer>
   </div>
@@ -33,5 +34,10 @@ export default {
   width: 60vw;
   margin: auto;
   text-align: center;
+}
+
+#aboutText a {
+  color: white;
+  text-decoration: none;
 }
 </style>

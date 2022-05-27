@@ -53,6 +53,7 @@ export default {
   props: {
     id: { type: Number, required: false },
   },
+
   data() {
     return {
       pimsData: {
@@ -67,6 +68,7 @@ export default {
       },
     };
   },
+
   watch: {
     id: function (newId) {
       // On met à jour le panneau latéral et on l'affiche (si il est caché)
@@ -74,6 +76,7 @@ export default {
       document.querySelector("#eventBox").classList.remove("hidden");
     },
   },
+
   methods: {
     retrievePimsData: async function (eventId) {
       let data = await getEventById(eventId);
@@ -99,7 +102,6 @@ export default {
 .hidden {
   display: none;
 }
-
 #eventBoxContent {
   position: fixed;
   margin-left: -1vw;
